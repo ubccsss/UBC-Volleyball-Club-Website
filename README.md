@@ -1,12 +1,49 @@
-UBC Volleyball club dashboard 
+#UBC Volleyball Club Dashboard 
 
-  npm run dev
-    Starts the development server.
+## Setup 
+Once you clone the project, open it up in vscode and use the following commands:
 
-  npm run build
-    Builds the app for production.
+To install all the packages
+```
+npm install
+```
 
-  npm start
-    Runs the built app in production mode.
+To start the development server.
+```
+npm run dev
+```
 
-    Please use npm run lint before creating your pull requests!
+Before you commit and create your pull requests use this:
+```
+npm run lint
+```
+
+## File Structure
+```
+├── app
+│   ├── page.tsx          Homepage (www.website/)
+│   ├── layout.tsx        Root layout for each page 
+│   ├── not-found.tsx     404 page
+│   ├── error.tsx         Error page
+│   ├── Roster            routes to www.website/roster  
+│   │   ├── page.tsx        roster page
+│   ├── api               routes to www.website/api (Backend API)  
+│   │   ├── getUsers.tsx      api Route (www.website/api/getUsers)
+│   ├── ...               ...The Rest of the Pages
+├── src
+│   ├── components        All of our Frontend components go here
+│   │   ├── ui              Put all UI elements like buttons here
+│   ├── lib               All of our controllers and handlers go here
+│   ├── styles            Put css files here
+│   ├── configs           
+│   ├── types             Put typescript type definitons here
+├── public
+│   ├── images          
+│   │   ├── all image files
+│   ├── ... all other public files
+├── ...
+├── node_modules
+├── package.json
+├── package-lock.json 
+└── .gitignore
+```

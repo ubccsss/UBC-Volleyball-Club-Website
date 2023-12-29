@@ -81,10 +81,29 @@
 
 }
 
+.signupSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .signUpText {
     color: black;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     margin-top: 48px;
-    text-align: center;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+.signUpLink {
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    margin-top: 48px;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.signUpLink:hover {
+    text-decoration: underline;
 }

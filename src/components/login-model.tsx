@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
+import SignupModal from "./signup-modal";
 
 interface ModalProps {
   showModal: boolean;
@@ -30,8 +31,23 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal }) => {
         event.preventDefault();
         // logic TODO
     };
+
+    const [showSignupModal, setShowSignupModal] = useState(false);
+
+    const handleSignupClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      
+      setShowSignupModal(true);
+      closeModal();
+    };
+  
+    const closeSignupModal = () => {
+      setShowSignupModal(false);
+    };
+
   return (
-    showModal && (
+    <>
+    {showModal && (
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
           <h1 className={styles.loginTitle}>Login to your account</h1>
@@ -52,10 +68,17 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal }) => {
                 LOG IN
             </button>
           </form>
-          <h1 className={styles.signUpText}> Not registered? Sign up.</h1>
+          <div className={styles.signupSection}>
+            <h1 className={styles.signUpText}> Not registered?</h1>
+            <a className={styles.signUpLink} href="#" onClick={handleSignupClick}> Sign up.</a>
+
+          </div>
         </div>
       </div>
-    )
+    )}
+
+    <SignupModal showSignupModal={showSignupModal} closeSignupModal={closeSignupModal}/>
+    </>
   );
 };
 

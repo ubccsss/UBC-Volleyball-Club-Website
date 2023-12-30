@@ -12,6 +12,16 @@ const SignupModal: React.FC<SignupModalProps> = ({
   closeSignupModal,
 }) => {
 
+  const [selectedAccount, setSelectedAccount] = useState('player');
+
+  const handleAccountSelect = (accountType: any) => {
+    if (selectedAccount === accountType) {
+      setSelectedAccount(selectedAccount); 
+    } else {
+      setSelectedAccount(accountType); 
+    }
+  };
+
   
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
@@ -21,6 +31,7 @@ const SignupModal: React.FC<SignupModalProps> = ({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(selectedAccount);
 
     // TODO
   };
@@ -46,7 +57,10 @@ const SignupModal: React.FC<SignupModalProps> = ({
           <h1 className={styles.loginTitle}>Create account as...</h1>
           <form className={styles.formContainer} onSubmit={handleSubmit}>
             <div className={styles.accountTypeContainer}>
-              <div className={styles.accountType}>
+              <button className={`${styles.accountType} 
+                                  ${selectedAccount === 'player' ? styles.selected : ''}`}
+                      onClick={() => handleAccountSelect('player')}
+              >
                 <div className={styles.accountDesc}>
 
                   <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,8 +74,11 @@ const SignupModal: React.FC<SignupModalProps> = ({
                   </svg>
                   <h1 className={styles.textBasic}> Player </h1>
                 </div>
-              </div>
-              <div className={styles.accountType}>
+              </button>
+              <button className={`${styles.accountType} 
+                                  ${selectedAccount === 'admin' ? styles.selected : ''}`}
+                      onClick={() => handleAccountSelect('admin')}
+              >
                 <div className={styles.accountDesc}>
                   <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M27.3333 35.875V32.4583C27.3333 30.646 26.6134 28.9079 25.3319 27.6264C24.0504 26.3449 22.3123 25.625 20.5 25.625H10.25C8.43765 25.625 6.69956 26.3449 5.41806 27.6264C4.13656 28.9079 3.41663 30.646 3.41663 32.4583V35.875" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -70,7 +87,7 @@ const SignupModal: React.FC<SignupModalProps> = ({
                   </svg>
                   <h1 className={styles.textBasic}> Admin </h1>
                 </div>
-              </div>
+              </button>
             </div>
             <button className={styles.buttonBasic}>Continue</button>
           </form>
@@ -83,7 +100,7 @@ const SignupModal: React.FC<SignupModalProps> = ({
     )
     }
     {/* <Modal showModal={showSigninModal} closeModal={closeSigninModal} /> */} 
-    {/* need to fix this TODO */}
+    {/* need to fix loop TODO */}
 
     </>
     

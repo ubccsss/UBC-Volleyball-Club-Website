@@ -64,7 +64,7 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal }) => {
                 </div>
             </div>
             
-            <button className={styles.loginButton}>
+            <button className={styles.buttonBasic}>
                 LOG IN
             </button>
           </form>

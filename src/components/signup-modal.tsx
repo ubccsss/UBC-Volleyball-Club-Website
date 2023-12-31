@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
-import Modal from "./login-model";
 
 interface SignupModalProps {
   showSignupModal: boolean;
@@ -26,6 +25,8 @@ const SignupModal: React.FC<SignupModalProps> = ({
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       closeSignupModal();
+      window.location.href = '/';
+
     }
   };
 
@@ -34,19 +35,6 @@ const SignupModal: React.FC<SignupModalProps> = ({
     console.log(selectedAccount);
 
     // TODO
-  };
-
-  const [showSigninModal, setShowSigninModal] = useState(false);
-
-  const handleSigninClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    
-    setShowSigninModal(true);
-    closeSigninModal();
-  };
-
-  const closeSigninModal = () => {
-    setShowSigninModal(false);
   };
 
   return (
@@ -93,15 +81,12 @@ const SignupModal: React.FC<SignupModalProps> = ({
           </form>
           <div className={styles.signupSection}>
             <h1 className={styles.signUpText}> Already registered?</h1>
-            <a className={styles.signUpLink} href="#" onClick={handleSigninClick}> Sign in.</a>
+            <a className={styles.signUpLink} href="/login"> Sign in.</a>
           </div>
         </div>
       </div>
     )
     }
-    {/* <Modal showModal={showSigninModal} closeModal={closeSigninModal} /> */} 
-    {/* need to fix loop TODO */}
-
     </>
     
   );

@@ -1,12 +1,23 @@
+"use client"
+import SigninModal from "@/src/components/login-modal";
+import { useState } from "react";
 
 export default function LoginPage() {
+  const [showModal, setShowModal] = useState(true);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
-    <section className="">
+
+      <section className="">
         <div>
-            <h1>
-                login page
-            </h1>
+         <SigninModal showModal={showModal} closeModal={closeModal} />
+
         </div>
-    </section>
+      </section>
+
+
   )
 }

@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
 
 interface SignupModalProps {
-  showSignupModal: boolean;
-  closeSignupModal: () => void;
 }
 
-const SignupModal: React.FC<SignupModalProps> = ({
-  showSignupModal,
-  closeSignupModal,
-}) => {
+const SignupModal: React.FC<SignupModalProps> = () => {
 
   const [selectedAccount, setSelectedAccount] = useState('player');
 
@@ -24,7 +19,6 @@ const SignupModal: React.FC<SignupModalProps> = ({
   
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      closeSignupModal();
       window.location.href = '/';
 
     }
@@ -39,7 +33,6 @@ const SignupModal: React.FC<SignupModalProps> = ({
 
   return (
     <>
-    {showSignupModal && (
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
           <h1 className={styles.loginTitle}>Create account as...</h1>
@@ -85,8 +78,6 @@ const SignupModal: React.FC<SignupModalProps> = ({
           </div>
         </div>
       </div>
-    )
-    }
     </>
     
   );

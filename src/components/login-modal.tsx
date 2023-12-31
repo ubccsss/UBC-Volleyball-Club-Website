@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
 
 interface ModalProps {
-  showModal: boolean;
-  closeModal: () => void;
 }
 
 const inputStyles = {
@@ -18,23 +15,21 @@ const inputStyles = {
 
 }
 
-const SigninModal: React.FC<ModalProps> = ({ showModal, closeModal }) => {
+const SigninModal: React.FC<ModalProps> = () => {
 
-    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (event.target === event.currentTarget) {
-          closeModal();
-          window.location.href = '/';
-        }
-      };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // logic TODO
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      if (event.target === event.currentTarget) {
+        window.location.href = '/';
+      }
     };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      // logic TODO
+  };
 
   return (
     <>
-    {showModal && (
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
           <h1 className={styles.loginTitle}>Login to your account</h1>
@@ -61,7 +56,6 @@ const SigninModal: React.FC<ModalProps> = ({ showModal, closeModal }) => {
           </div>
         </div>
       </div>
-    )}
     </>
   );
 };

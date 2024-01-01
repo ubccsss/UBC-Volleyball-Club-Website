@@ -5,37 +5,37 @@
     padding: 16px;
     background-color: white;
     color: white;
-  }
-  
-  .left {
-    order:1;
-  }
-  
-  .right {
-    order: 2; 
-  }
+}
 
-  
-  .loginButton {
-    padding: 8px 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #22276C;
-    width: 164px;
-    height: 50px;
+.left {
+  order:1;
+}
 
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
+.right {
+  order: 2; 
+}
+
+
+.loginButton {
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: #22276C;
+  width: 164px;
+  height: 50px;
+
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
   
-  .loginButton:hover {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    
-  }
+.loginButton:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  
+}
 
   

@@ -6,9 +6,27 @@ import styles from "@/src/styles/modal.module.css";
 interface SignupModalProps {
 }
 
+
+const inputStyles = {
+  width: "444.757px",
+  height: "62px",
+  color: "black",
+  paddingLeft: "20px",
+  paddingRight: "20px",
+  fontSize: "24px",
+  fontFamily: "Inter, sans-serif",
+  borderRadius: "10px",
+
+}
+
 const SignupModal: React.FC<SignupModalProps> = () => {
 
   const [selectedAccount, setSelectedAccount] = useState('player');
+  const [showSelectAccountType, setShowSelectAccountType] = useState(true);
+  const [showPlayerContent, setShowPlayerContent] = useState(false);
+  const [showAdminContent, setShowAdminContent] = useState(false);
+  const [showAdminConfirmation, setShowAdminConfirmation] = useState(false);
+
 
   const handleAccountSelect = (accountType: any) => {
     if (selectedAccount === accountType) {
@@ -26,20 +44,48 @@ const SignupModal: React.FC<SignupModalProps> = () => {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleAccountType = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(selectedAccount);
+    if (selectedAccount === 'player') {
+      setShowSelectAccountType(false)
+      setShowPlayerContent(true);
+      setShowAdminContent(false);
+      
+    } else if (selectedAccount === 'admin') {
+      setShowSelectAccountType(false)
+
+      setShowPlayerContent(false);
+      setShowAdminContent(true);
+    }
+  };
+
+  const handleAdminSignup =  (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     // TODO
+    // check passwords match
+    // sends email
+
+    setShowAdminContent(false)
+    setShowAdminConfirmation(true)
+  };
+
+  const handlePlayerSignup =  (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // TODO
+    // need more info
   };
 
   return (
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
-          <h1 className={styles.loginTitle}>Create account as...</h1>
-          <form className={styles.formContainer} onSubmit={handleSubmit}>
+          {showSelectAccountType &&
+          (<div> 
+            <h1 className={styles.loginTitle}>Create account as...</h1>
+          <form className={styles.formContainer} onSubmit={handleAccountType}>
             <div className={styles.accountTypeContainer}>
-              <button className={`${styles.accountType} 
+              <button type="button" className={`${styles.accountType} 
                                   ${selectedAccount === 'player' ? styles.selected : ''}`}
                       onClick={() => handleAccountSelect('player')}
               >
@@ -57,7 +103,7 @@ const SignupModal: React.FC<SignupModalProps> = () => {
                   <h1 className={styles.textBasic}> Player </h1>
                 </div>
               </button>
-              <button className={`${styles.accountType} 
+              <button type="button" className={`${styles.accountType} 
                                   ${selectedAccount === 'admin' ? styles.selected : ''}`}
                       onClick={() => handleAccountSelect('admin')}
               >
@@ -71,12 +117,83 @@ const SignupModal: React.FC<SignupModalProps> = () => {
                 </div>
               </button>
             </div>
-            <button className={styles.buttonBasic}>Continue</button>
-          </form>
+            <button type="submit" className={styles.buttonBasic}>Continue</button>
+          </form> </div>)}
+
+          {showAdminContent && (
+          <div>
+            <h1 className={styles.loginTitle}>Create your admin account</h1>
+              <form onSubmit={handleAdminSignup} className={styles.formContainer}>
+                <div className={styles.formGroup}>
+                  <input style={inputStyles} type="text" id="email" name="email" placeholder="Email"/>
+                </div>
+                <div>
+                    <div className={styles.formGroup}>
+                        <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
+                    </div>
+                </div>
+                <div>
+                    <div className={styles.formGroup}>
+                        <input style={inputStyles} type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" />
+                    </div>
+                </div>
+                
+                <button className={styles.buttonBasic}>
+                    SIGN UP
+                </button>
+              </form>
+          </div>
+          )}
+
+          {showPlayerContent && (
+            <div>
+            <h1 className={styles.loginTitle}>Player Registration</h1>
+              <form onSubmit={handlePlayerSignup} className={styles.formContainer}>
+                <div className={styles.formGroup}>
+                  <input style={inputStyles} type="text" id="name" name="name" placeholder="Name"/>
+                </div>
+                <div>
+                    <div className={styles.formGroup}>
+                        <input style={inputStyles} type="text" id="email" name="email" placeholder="Email" />
+                    </div>
+                </div>
+                <div>
+                    <div className={styles.formGroup}>
+                        <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
+                    </div>
+                </div>
+                
+                <button className={styles.buttonBasic}>
+                    SIGN UP
+                </button>
+              </form>
+          </div>
+          )}
+
+          {showAdminConfirmation && (
+          <div className={styles.confirmContainer}>
+            <h1 className={styles.confirmTitle}>Thank you!</h1>
+            <h2 className={styles.confirmText}>Your registration has been submitted and is currently being verified.
+              We will contact you shortly. 
+            </h2>
+            <div className={styles.homeContainer}>
+              <a href="/">
+                <button className={styles.buttonBasic}>
+                    Home
+                </button>
+              </a>  
+            </div>
+
+          </div>
+          )}
+
+          {!showAdminConfirmation && (
           <div className={styles.signupSection}>
             <h1 className={styles.signUpText}> Already registered?</h1>
             <a className={styles.signUpLink} href="/login"> Sign in.</a>
           </div>
+          )}
+
         </div>
       </div>
     

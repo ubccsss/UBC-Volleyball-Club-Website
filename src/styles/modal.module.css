@@ -16,6 +16,8 @@
     border-radius: 8px;
     width: 580px;
     height: 550px;
+    border-color: #22276C;
+    border-width: 1px;
 }
 
 .loginTitle {
@@ -26,7 +28,7 @@
     font-weight: 700;
     line-height: normal;
     padding-left: 48px;
-    margin-top: 85px;
+    margin-top: 70px;
     margin-bottom: 30px;
 }
 
@@ -95,7 +97,7 @@
     padding-left: 2px;
 }
 .signUpLink {
-    color: black;
+    color: #22276C;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     margin-top: 30px;
@@ -146,4 +148,36 @@
     color: white;
     font-size: 24px;
     font-family: 'Inter', sans-serif;
+}
+
+
+
+.confirmContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+  }
+
+.confirmTitle {
+    margin-top: 96px;
+    color: #22276C;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.confirmText {
+    margin-top: 20px;
+    margin-bottom: 80px;
+    color: #000;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+}
+
+.homeContainer {
+    justify-content: center;
+    align-items: center;
 }

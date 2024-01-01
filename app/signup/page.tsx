@@ -1,5 +1,5 @@
 
-import SignupModal from "@/src/components/signup-modal";
+import SignupModal from "@/src/components/modal/signup-modal";
 
 export default function SignupPage() {
 

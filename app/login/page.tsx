@@ -1,5 +1,5 @@
 
-import SigninModal from "@/src/components/login-modal";
+import SigninModal from "@/src/components/modal/login-modal";
 
 export default function LoginPage() {
 

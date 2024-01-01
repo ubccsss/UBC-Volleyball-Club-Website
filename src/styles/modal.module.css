@@ -22,7 +22,7 @@
 
 .login-title {
   color: black;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +43,7 @@
 .form-group {
   margin-bottom: 16px;
   border-radius: 10px;
-  border: 1px solid #ACABAB;
+  border: 1px solid #acabab;
 }
 
 .forgot-password {
@@ -51,7 +51,7 @@
   margin-bottom: 16px;
   color: black;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .forgot-password:hover {
@@ -67,7 +67,7 @@
   width: 164px;
   height: 50px;
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -86,7 +86,7 @@
 
 .sign-up-text {
   color: black;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   margin-top: 30px;
   padding-right: 2px;
@@ -95,7 +95,7 @@
 
 .sign-up-link {
   color: #22276c;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   margin-top: 30px;
   padding-right: 2px;
@@ -129,7 +129,7 @@
 }
 
 .selected {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 70%); /* Adjusted shadow for a less spread and darker effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 70%);
 }
 
 .account-desc {
@@ -142,13 +142,13 @@
 .text-basic {
   color: white;
   font-size: 24px;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .confirm-container {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
 
@@ -156,7 +156,7 @@
   margin-top: 96px;
   color: #22276c;
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 36px;
   font-weight: 700;
 }
@@ -166,6 +166,6 @@
   margin-bottom: 80px;
   color: #000;
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 24px;
 }

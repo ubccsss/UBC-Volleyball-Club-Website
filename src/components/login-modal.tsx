@@ -1,4 +1,6 @@
+"use client"
 import styles from "@/src/styles/modal.module.css";
+
 
 interface ModalProps {
 }

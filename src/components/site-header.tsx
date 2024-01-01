@@ -1,6 +1,5 @@
 "use client"
 
-import React, { useState } from "react";
 import styles from "@/src/styles/header.module.css";
 
 interface SiteHeaderProps {}

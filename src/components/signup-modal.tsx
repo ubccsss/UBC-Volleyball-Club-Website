@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
 

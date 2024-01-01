@@ -1,4 +1,4 @@
-"use client"
+
 import SigninModal from "@/src/components/login-modal";
 
 export default function LoginPage() {

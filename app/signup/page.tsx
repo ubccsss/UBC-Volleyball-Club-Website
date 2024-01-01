@@ -1,4 +1,3 @@
-"use client"
 
 import SignupModal from "@/src/components/signup-modal";
 

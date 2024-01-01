@@ -13,7 +13,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = () => {
       </div>
       <div className={styles.right}>
         <a href="/login">
-          <button className={styles.loginButton}>
+          <button className={styles['login-button']}>
             LOG IN
           </button>
         </a>

@@ -27,16 +27,14 @@ const SignupModal: React.FC<SignupModalProps> = () => {
   const [showAdminContent, setShowAdminContent] = useState(false);
   const [showAdminConfirmation, setShowAdminConfirmation] = useState(false);
 
-
   const handleAccountSelect = (accountType: any) => {
     if (selectedAccount === accountType) {
-      setSelectedAccount(selectedAccount); 
+      setSelectedAccount(selectedAccount);
     } else {
-      setSelectedAccount(accountType); 
+      setSelectedAccount(accountType);
     }
   };
 
-  
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       window.location.href = '/';
@@ -50,10 +48,8 @@ const SignupModal: React.FC<SignupModalProps> = () => {
       setShowSelectAccountType(false)
       setShowPlayerContent(true);
       setShowAdminContent(false);
-      
     } else if (selectedAccount === 'admin') {
       setShowSelectAccountType(false)
-
       setShowPlayerContent(false);
       setShowAdminContent(true);
     }
@@ -78,17 +74,17 @@ const SignupModal: React.FC<SignupModalProps> = () => {
   };
 
   return (
-      <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
-        <div className={styles.modalContent}>
+      <div className={styles['modal-backdrop']} onClick={handleBackdropClick}>
+        <div className={styles['modal-content']}>
           {showSelectAccountType && (
-          <div> 
-            <h1 className={styles.loginTitle}>Create account as...</h1>
-            <form className={styles.formContainer} onSubmit={handleAccountType}>
-              <div className={styles.accountTypeContainer}>
-                <button type="button" className={`${styles.accountType} 
+          <div>
+            <h1 className={styles['login-title']}>Create account as...</h1>
+            <form className={styles['form-container']} onSubmit={handleAccountType}>
+              <div className={styles['account-type-container']}>
+                <button type="button" className={`${styles['account-type']}
                                     ${selectedAccount === 'player' ? styles.selected : ''}`}
                         onClick={() => handleAccountSelect('player')}>
-                  <div className={styles.accountDesc}>
+                  <div className={styles['account-desc']}>
                     <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M20.5 37.5834C29.9349 37.5834 37.5834 29.9349 37.5834 20.5C37.5834 11.0652 29.9349 3.41669 20.5 3.41669C11.0652 3.41669 3.41669 11.0652 3.41669 20.5C3.41669 29.9349 11.0652 37.5834 20.5 37.5834Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M11.9583 15.375C15.8239 10.7705 19.8078 9.54843 29.0416 6.83332" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -98,46 +94,45 @@ const SignupModal: React.FC<SignupModalProps> = () => {
                       <path d="M10.0363 33.8096C17.0931 31.3118 21.0439 25.9984 22.2082 18.7917" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M15.8291 36.8612C24.836 33.7452 29.6539 26.7354 30.75 17.0833" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <h1 className={styles.textBasic}> Player </h1>
+                    <h1 className={styles['text-basic']}> Player </h1>
                   </div>
                 </button>
-                <button type="button" className={`${styles.accountType} 
+                <button type="button" className={`${styles['account-type']}
                                     ${selectedAccount === 'admin' ? styles.selected : ''}`}
                         onClick={() => handleAccountSelect('admin')}>
-                  <div className={styles.accountDesc}>
+                  <div className={styles['account-desc']}>
                     <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M27.3333 35.875V32.4583C27.3333 30.646 26.6134 28.9079 25.3319 27.6264C24.0504 26.3449 22.3123 25.625 20.5 25.625H10.25C8.43765 25.625 6.69956 26.3449 5.41806 27.6264C4.13656 28.9079 3.41663 30.646 3.41663 32.4583V35.875" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M15.375 18.7917C19.1489 18.7917 22.2083 15.7323 22.2083 11.9583C22.2083 8.18439 19.1489 5.125 15.375 5.125C11.601 5.125 8.54163 8.18439 8.54163 11.9583C8.54163 15.7323 11.601 18.7917 15.375 18.7917Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M27.3334 18.7917L30.75 22.2083L37.5834 15.375" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <h1 className={styles.textBasic}> Admin </h1>
+                    <h1 className={styles['text-basic']}> Admin </h1>
                   </div>
                 </button>
               </div>
-              <button type="submit" className={styles.buttonBasic}>Continue</button>
-            </form> 
+              <button type="submit" className={styles['button-basic']}>Continue</button>
+            </form>
           </div>
           )}
 
           {showAdminContent && (
           <div>
-            <h1 className={styles.loginTitle}>Create your admin account</h1>
-            <form onSubmit={handleAdminSignup} className={styles.formContainer}>
-              <div className={styles.formGroup}>
+            <h1 className={styles['login-title']}>Create your admin account</h1>
+            <form onSubmit={handleAdminSignup} className={styles['form-container']}>
+              <div className={styles['form-group']}>
                 <input style={inputStyles} type="text" id="email" name="email" placeholder="Email"/>
               </div>
               <div>
-                <div className={styles.formGroup}>
+                <div className={styles['form-group']}>
                   <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
                 </div>
               </div>
               <div>
-                <div className={styles.formGroup}>
+                <div className={styles['form-group']}>
                   <input style={inputStyles} type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" />
                 </div>
               </div>
-              
-              <button className={styles.buttonBasic}>
+              <button className={styles['button-basic']}>
                 SIGN UP
               </button>
             </form>
@@ -146,23 +141,22 @@ const SignupModal: React.FC<SignupModalProps> = () => {
 
           {showPlayerContent && (
             <div>
-            <h1 className={styles.loginTitle}>Player Registration</h1>
-            <form onSubmit={handlePlayerSignup} className={styles.formContainer}>
-              <div className={styles.formGroup}>
+            <h1 className={styles['login-title']}>Player Registration</h1>
+            <form onSubmit={handlePlayerSignup} className={styles['form-container']}>
+              <div className={styles['form-group']}>
                 <input style={inputStyles} type="text" id="name" name="name" placeholder="Name"/>
               </div>
               <div>
-                <div className={styles.formGroup}>
+                <div className={styles['form-group']}>
                   <input style={inputStyles} type="text" id="email" name="email" placeholder="Email" />
                 </div>
               </div>
               <div>
-                <div className={styles.formGroup}>
+                <div className={styles['form-group']}>
                   <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
                 </div>
               </div>
-              
-              <button className={styles.buttonBasic}>
+              <button className={styles['button-basic']}>
                 SIGN UP
               </button>
             </form>
@@ -170,32 +164,30 @@ const SignupModal: React.FC<SignupModalProps> = () => {
           )}
 
           {showAdminConfirmation && (
-          <div className={styles.confirmContainer}>
-            <h1 className={styles.confirmTitle}>Thank you!</h1>
-            <h2 className={styles.confirmText}>Your registration has been submitted and is currently being verified.
-              We will contact you shortly. 
+          <div className={styles['confirm-container']}>
+            <h1 className={styles['confirm-title']}>Thank you!</h1>
+            <h2 className={styles['confirm-text']}>Your registration has been submitted and is currently being verified.
+              We will contact you shortly.
             </h2>
-            <div className={styles.homeContainer}>
+            <div className={styles["home-container"]}>
               <a href="/">
-                <button className={styles.buttonBasic}>
+                <button className={styles['button-basic']}>
                   Home
                 </button>
-              </a>  
+              </a>
             </div>
-
           </div>
           )}
 
           {!showAdminConfirmation && (
-          <div className={styles.signupSection}>
-            <h1 className={styles.signUpText}> Already registered?</h1>
-            <a className={styles.signUpLink} href="/login"> Sign in.</a>
+          <div className={styles['signup-section']}>
+            <h1 className={styles['sign-up-text']}> Already registered?</h1>
+            <a className={styles['sign-up-link']} href="/login"> Sign in.</a>
           </div>
           )}
 
         </div>
       </div>
-    
   );
 };
 

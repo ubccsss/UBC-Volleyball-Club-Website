@@ -18,7 +18,6 @@ const inputStyles = {
 }
 
 const SigninModal: React.FC<ModalProps> = () => {
-  
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target === event.currentTarget) {
         window.location.href = '/';
@@ -31,33 +30,32 @@ const SigninModal: React.FC<ModalProps> = () => {
   };
 
   return (
-      <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
-        <div className={styles.modalContent}>
-          <h1 className={styles.loginTitle}>Login to your account</h1>
-          <form onSubmit={handleSubmit} className={styles.formContainer}>
-            <div className={styles.formGroup}>
+      <div className={styles['modal-backdrop']} onClick={handleBackdropClick}>
+        <div className={styles['modal-content']}>
+          <h1 className={styles['login-title']}>Login to your account</h1>
+          <form onSubmit={handleSubmit} className={styles['form-container']}>
+            <div className={styles['form-group']}>
               <input style={inputStyles} type="text" id="username" name="username" placeholder="Username"/>
             </div>
             <div>
-              <div className={styles.formGroup}>
+              <div className={styles['form-group']}>
                 <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
               </div>
-              <div className={styles.forgotPassword}>
+              <div className={styles['forgot-password']}>
                 <a href="#">Forgot your password?</a>
               </div>
             </div>
-            
-            <button className={styles.buttonBasic}>
+            <button className={styles['button-basic']}>
               LOG IN
             </button>
           </form>
-          <div className={styles.signupSection}>
-            <h1 className={styles.signUpText}> Not registered?</h1>
-            <a className={styles.signUpLink} href="/signup"> Sign up.</a>
+          <div className={styles['signup-section']}>
+            <h1 className={styles['sign-up-text']}> Not registered?</h1>
+            <a className={styles['sign-up-link']} href="/signup"> Sign up.</a>
           </div>
         </div>
       </div>
   );
 };
 
-export default SigninModal;   
+export default SigninModal;

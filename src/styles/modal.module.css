@@ -1,176 +1,171 @@
-.modalBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 580px;
+  height: 550px;
+  border-color: #22276c;
+  border-width: 1px;
+}
+
+.login-title {
+  color: black;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-left: 48px;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   }
-  
-.modalContent {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 580px;
-    height: 550px;
-    border-color: #22276C;
-    border-width: 1px;
+
+.form-group {
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #ACABAB;
 }
 
-.loginTitle {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding-left: 48px;
-    margin-top: 70px;
-    margin-bottom: 30px;
+.forgot-password {
+  text-align: right;
+  margin-bottom: 16px;
+  color: black;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
 }
 
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-.formGroup {
-    margin-bottom: 16px;
-    border-radius: 10px;
-    border: 1px solid #ACABAB;
+.forgot-password:hover {
+  text-decoration: underline;
 }
 
-.forgotPassword {
-    text-align: right;
-    margin-bottom: 16px;
-    color: black;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-
+.button-basic {
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: #22276c;
+  width: 164px;
+  height: 50px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.forgotPassword:hover {
-    text-decoration: underline;
-
+.button-basic:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 25%);
 }
 
-.buttonBasic {
-    padding: 8px 16px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #22276C;
-    width: 164px;
-    height: 50px;
-
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-.buttonBasic:hover {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+.signup-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signupSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.sign-up-text {
+  color: black;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin-top: 30px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
-.signUpText {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    margin-top: 30px;
-    padding-right: 2px;
-    padding-left: 2px;
-}
-.signUpLink {
-    color: #22276C;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    margin-top: 30px;
-    padding-right: 2px;
-    padding-left: 2px;
+.sign-up-link {
+  color: #22276c;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin-top: 30px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
-.signUpLink:hover {
-    text-decoration: underline;
+.sign-up-link:hover {
+  text-decoration: underline;
 }
-
 
 /* signup modal */
 
-.accountTypeContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    margin-top: 20px;
-    width: 456px;
-    
+.account-type-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 456px;
 }
 
-.accountType {
-    background-color: #22276C;
-    width: 199px;
-    height: 144px;
-    border-radius: 10px;
-    border: 1px solid #ACABAB;
-    margin-bottom: 55px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.account-type {
+  background-color: #22276c;
+  width: 199px;
+  height: 144px;
+  border-radius: 10px;
+  border: 1px solid #acabab;
+  margin-bottom: 55px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .selected {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Adjusted shadow for a less spread and darker effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 70%); /* Adjusted shadow for a less spread and darker effect */
 }
 
-.accountDesc {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
+.account-desc {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
 }
 
-.textBasic {
-    color: white;
-    font-size: 24px;
-    font-family: 'Inter', sans-serif;
+.text-basic {
+  color: white;
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
 }
 
-.confirmContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-  }
-
-.confirmTitle {
-    margin-top: 96px;
-    color: #22276C;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
 }
 
-.confirmText {
-    margin-top: 20px;
-    margin-bottom: 80px;
-    color: #000;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
+.confirm-title {
+  margin-top: 96px;
+  color: #22276c;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.confirm-text {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  color: #000;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
 }

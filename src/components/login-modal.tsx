@@ -29,7 +29,6 @@ const SigninModal: React.FC<ModalProps> = () => {
   };
 
   return (
-    <>
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
           <h1 className={styles.loginTitle}>Login to your account</h1>
@@ -56,7 +55,6 @@ const SigninModal: React.FC<ModalProps> = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

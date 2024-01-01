@@ -32,7 +32,6 @@ const SignupModal: React.FC<SignupModalProps> = () => {
   };
 
   return (
-    <>
       <div className={styles.modalBackdrop} onClick={handleBackdropClick}> 
         <div className={styles.modalContent}>
           <h1 className={styles.loginTitle}>Create account as...</h1>
@@ -78,7 +77,6 @@ const SignupModal: React.FC<SignupModalProps> = () => {
           </div>
         </div>
       </div>
-    </>
     
   );
 };

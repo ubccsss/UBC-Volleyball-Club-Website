@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
+import SignupForm from './signup-form';
 
 interface SignupModalProps {
 }
@@ -116,51 +117,28 @@ const SignupModal: React.FC<SignupModalProps> = () => {
           )}
 
           {showAdminContent && (
-          <div>
-            <h1 className={styles['login-title']}>Create your admin account</h1>
-            <form onSubmit={handleAdminSignup} className={styles['form-container']}>
-              <div className={styles['form-group']}>
-                <input style={inputStyles} type="text" id="email" name="email" placeholder="Email"/>
-              </div>
-              <div>
-                <div className={styles['form-group']}>
-                  <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
-                </div>
-              </div>
-              <div>
-                <div className={styles['form-group']}>
-                  <input style={inputStyles} type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" />
-                </div>
-              </div>
-              <button className={styles['button-basic']}>
-                SIGN UP
-              </button>
-            </form>
-          </div>
+            <SignupForm
+              title="Create your admin account"
+              onSubmit={handleAdminSignup}
+              buttonText="SIGN UP"
+              inputFields={[
+                { type: 'text', id: 'email', name: 'email', placeholder: 'Email' },
+                { type: 'password', id: 'password', name: 'password', placeholder: 'Password' },
+                { type: 'password', id: 'confirmpass', name: 'confirmpass', placeholder: 'Confirm Password' },
+              ]}
+            />
           )}
-
           {showPlayerContent && (
-            <div>
-            <h1 className={styles['login-title']}>Player Registration</h1>
-            <form onSubmit={handlePlayerSignup} className={styles['form-container']}>
-              <div className={styles['form-group']}>
-                <input style={inputStyles} type="text" id="name" name="name" placeholder="Name"/>
-              </div>
-              <div>
-                <div className={styles['form-group']}>
-                  <input style={inputStyles} type="text" id="email" name="email" placeholder="Email" />
-                </div>
-              </div>
-              <div>
-                <div className={styles['form-group']}>
-                  <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
-                </div>
-              </div>
-              <button className={styles['button-basic']}>
-                SIGN UP
-              </button>
-            </form>
-          </div>
+            <SignupForm
+              title="Player Registration"
+              onSubmit={handlePlayerSignup}
+              buttonText="SIGN UP"
+              inputFields={[
+                { type: 'text', id: 'name', name: 'name', placeholder: 'Name' },
+                { type: 'text', id: 'email', name: 'email', placeholder: 'Email' },
+                { type: 'password', id: 'password', name: 'password', placeholder: 'Password' },
+              ]}
+            />
           )}
 
           {showAdminConfirmation && (

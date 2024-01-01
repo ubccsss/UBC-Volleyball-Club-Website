@@ -18,7 +18,7 @@ const inputStyles = {
 }
 
 const SigninModal: React.FC<ModalProps> = () => {
-
+  
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target === event.currentTarget) {
         window.location.href = '/';

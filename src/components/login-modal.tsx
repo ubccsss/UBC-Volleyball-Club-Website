@@ -39,16 +39,16 @@ const SigninModal: React.FC<ModalProps> = () => {
               <input style={inputStyles} type="text" id="username" name="username" placeholder="Username"/>
             </div>
             <div>
-                <div className={styles.formGroup}>
-                    <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
-                </div>
-                <div className={styles.forgotPassword}>
-                    <a href="#">Forgot your password?</a>
-                </div>
+              <div className={styles.formGroup}>
+                <input style={inputStyles} type="password" id="password" name="password" placeholder="Password" />
+              </div>
+              <div className={styles.forgotPassword}>
+                <a href="#">Forgot your password?</a>
+              </div>
             </div>
             
             <button className={styles.buttonBasic}>
-                LOG IN
+              LOG IN
             </button>
           </form>
           <div className={styles.signupSection}>

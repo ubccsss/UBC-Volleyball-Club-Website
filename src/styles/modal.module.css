@@ -150,8 +150,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-
-
 .confirmContainer {
     display: flex;
     flex-direction: column;
@@ -175,9 +173,4 @@
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-}
-
-.homeContainer {
-    justify-content: center;
-    align-items: center;
 }

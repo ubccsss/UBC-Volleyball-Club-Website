@@ -1,39 +1,31 @@
-import Link from "next/link"
+import Head from 'next/head'
 
-import { siteConfig } from "@/src/config/site"
-import { buttonVariants } from "@/src/components/ui/button"
-
-export default function IndexPage() {
+export default function Home() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Beautifully designed components <br className="hidden sm:inline" />
-          built with Radix UI and Tailwind CSS.
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
+    <div className="bg-white">
+      <Head>
+        <title>UBC Volleyball Site</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <header className="flex justify-between items-center p-4">
+        <img src='/clubLogo.png' alt="Club logo" className="h-10 w-auto"/>
+        <a href="https://example.com" className="bg-custom-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          LOG IN
+        </a>
+      </header>
+
+
+
+      <div style={{ marginTop: '5%', marginRight: '10%', marginBottom: '5%', marginLeft: '10%'}}>
+        <img src="/R.jpg" alt="Volleyball image"/>
+      </div>
+
+      <div>
+        <p className="text-center">
+          Tryouts information?
         </p>
       </div>
-      <div className="flex gap-4">
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
-          Documentation
-        </Link>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.github}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          GitHub
-        </Link>
-      </div>
-    </section>
+    </div>
   )
 }

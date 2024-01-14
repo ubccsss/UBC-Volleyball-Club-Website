@@ -1,5 +1,31 @@
 import React from 'react';
 import styles from "@/src/styles/modal.module.css";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/src/components/ui/form"
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+import { useForm } from "react-hook-form"
+
+
+
+// TODO: add restrictions
+const formSchema = z.object({
+  username: z.string().min(2,{
+    message: "Username must be at least 2 characters.",
+  }).max(50),
+  password: z.string(),
+  name: z.string()
+
+})
 
 interface InputField {
   type: string;
@@ -16,36 +42,43 @@ interface SignupFormProps {
 }
 
 const SignupForm: React.FC<SignupFormProps> = ({ title, onSubmit, buttonText, inputFields }) => {
-    const inputStyles = {
-        width: "444.757px",
-        height: "62px",
-        color: "black",
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        fontSize: "24px",
-        fontFamily: "Inter, sans-serif",
-        borderRadius: "10px",
-      }
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      name: "",
+    },
+  })
 
   return (
     <div>
       <h1 className={styles['login-title']}>{title}</h1>
-      <form onSubmit={onSubmit} className={styles['form-container']}>
-        {inputFields.map((field, index) => (
-          <div key={index} className={styles['form-group']}>
-            <input
-              style={inputStyles}
-              type={field.type}
-              id={field.id}
+      <Form {...form}>
+        <form onSubmit={onSubmit} className={styles['form-container']}>
+          {inputFields.map((field, index) => (
+            <FormField
+              key={index}
+              control={form.control}
               name={field.name}
-              placeholder={field.placeholder}
+              render={({ fieldr }) => (
+              <FormItem >
+                  <Input
+                    type={field.type}
+                    id={field.id}
+                    name={field.name}
+                    placeholder={field.placeholder} {...fieldr}
+                  />
+                <FormMessage />
+              </FormItem>
+              )}
             />
-          </div>
-        ))}
-        <button className={styles['button-basic']}>
-          {buttonText}
-        </button>
-      </form>
+          ))}
+          <Button type="submit" variant="custom">
+            {buttonText}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

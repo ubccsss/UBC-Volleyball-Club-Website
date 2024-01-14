@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "@/src/styles/modal.module.css";
+import { Button } from "../ui/button";
 
 interface AccountButtonProps {
   accountType: string;
@@ -19,9 +20,10 @@ const AccountButton: React.FC<AccountButtonProps> = ({
   };
 
   return (
-    <button
+    <Button
       type="button"
-      className={`${styles['account-type']} ${isSelected ? styles.selected : ''}`}
+      variant="accountType"
+      className={`${isSelected ? styles.selected : ''}`}
       onClick={handleButtonClick}
     >
       <div className={styles['account-desc']}>
@@ -45,7 +47,7 @@ const AccountButton: React.FC<AccountButtonProps> = ({
         )}
         <h1 className={styles['text-basic']}>{accountType === 'player' ? 'Player' : 'Admin'}</h1>
       </div>
-    </button>
+    </Button>
   );
 };
 

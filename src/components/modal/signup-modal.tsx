@@ -4,22 +4,21 @@ import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
 import SignupForm from './signup-form';
 import AccountButton from "./account-type-button";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/src/components/ui/form"
 
 interface SignupModalProps {
 }
 
-
-const inputStyles = {
-  width: "444.757px",
-  height: "62px",
-  color: "black",
-  paddingLeft: "20px",
-  paddingRight: "20px",
-  fontSize: "24px",
-  fontFamily: "Inter, sans-serif",
-  borderRadius: "10px",
-
-}
 
 const SignupModal: React.FC<SignupModalProps> = () => {
 
@@ -60,6 +59,8 @@ const SignupModal: React.FC<SignupModalProps> = () => {
   const handleAdminSignup =  (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    console.log(event)
+
     // TODO
     // check passwords match
     // sends email
@@ -81,21 +82,29 @@ const SignupModal: React.FC<SignupModalProps> = () => {
           {showSelectAccountType && (
           <div>
             <h1 className={styles['login-title']}>Create account as...</h1>
-            <form className={styles['form-container']} onSubmit={handleAccountType}>
-              <div className={styles['account-type-container']}>
-                <AccountButton
-                  accountType="player"
-                  selectedAccount={selectedAccount}
-                  handleAccountSelect={handleAccountSelect}
-                />
-                <AccountButton
-                  accountType="admin"
-                  selectedAccount={selectedAccount}
-                  handleAccountSelect={handleAccountSelect}
-                />
-              </div>
-              <button type="submit" className={styles['button-basic']}>Continue</button>
-            </form>
+            <Form>
+              <form className={styles['form-container']} onSubmit={handleAccountType}>
+                <div className={styles['account-type-container']}>
+                  <FormItem>
+                    <AccountButton
+                      accountType="player"
+                      selectedAccount={selectedAccount}
+                      handleAccountSelect={handleAccountSelect}
+                    />
+                  </FormItem>
+                  <FormItem>
+                    <AccountButton
+                      accountType="admin"
+                      selectedAccount={selectedAccount}
+                      handleAccountSelect={handleAccountSelect}
+                    />
+                  </FormItem>
+                </div>
+                <Button  type="submit" variant="custom">
+                  Continue
+                </Button>
+              </form>
+            </Form>
           </div>
           )}
 
@@ -105,7 +114,7 @@ const SignupModal: React.FC<SignupModalProps> = () => {
               onSubmit={handleAdminSignup}
               buttonText="SIGN UP"
               inputFields={[
-                { type: 'text', id: 'email', name: 'email', placeholder: 'Email' },
+                { type: 'email', id: 'email', name: 'email', placeholder: 'Email' },
                 { type: 'password', id: 'password', name: 'password', placeholder: 'Password' },
                 { type: 'password', id: 'confirmpass', name: 'confirmpass', placeholder: 'Confirm Password' },
               ]}
@@ -117,8 +126,8 @@ const SignupModal: React.FC<SignupModalProps> = () => {
               onSubmit={handlePlayerSignup}
               buttonText="SIGN UP"
               inputFields={[
-                { type: 'text', id: 'name', name: 'name', placeholder: 'Name' },
-                { type: 'text', id: 'email', name: 'email', placeholder: 'Email' },
+                { type: 'name', id: 'name', name: 'name', placeholder: 'Name' },
+                { type: 'email', id: 'email', name: 'email', placeholder: 'Email' },
                 { type: 'password', id: 'password', name: 'password', placeholder: 'Password' },
               ]}
             />
@@ -130,12 +139,10 @@ const SignupModal: React.FC<SignupModalProps> = () => {
             <h2 className={styles['confirm-text']}>Your registration has been submitted and is currently being verified.
               We will contact you shortly.
             </h2>
-            <div className={styles["home-container"]}>
-              <a href="/">
-                <button className={styles['button-basic']}>
-                  Home
-                </button>
-              </a>
+            <div className={styles["home-container"]}>              
+                <Button asChild variant="custom">
+                  <Link href="/">Home</Link>
+                </Button>
             </div>
           </div>
           )}

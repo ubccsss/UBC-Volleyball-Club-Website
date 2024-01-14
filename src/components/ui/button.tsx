@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "underline-offset-4 hover:underline text-primary",
         custom: "bg-[#22276c] w-40 h-[50px] text-white text-2xl font-inter rounded-10 hover:shadow-[0_4px_4px_0_rgba(0,0,0,25%)]",
-
+        accountType: "bg-[#22276c] w-[200px] h-[144px] rounded-10 mb-[55px] justify-center items-center flex",
       },
       size: {
         default: "py-2 px-4",

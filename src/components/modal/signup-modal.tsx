@@ -139,7 +139,7 @@ const SignupModal: React.FC<SignupModalProps> = () => {
             <h2 className={styles['confirm-text']}>Your registration has been submitted and is currently being verified.
               We will contact you shortly.
             </h2>
-            <div className={styles["home-container"]}>              
+            <div className={styles["home-container"]}>
                 <Button asChild variant="custom">
                   <Link href="/">Home</Link>
                 </Button>

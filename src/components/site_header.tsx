@@ -3,8 +3,8 @@ import Link from "next/link"
 import { siteConfig } from "@/src/config/site"
 import { buttonVariants } from "@/src/components/ui/button"
 import { Icons } from "@/src/components/icons"
-import { MainNav } from "@/src/components/main-nav"
-import { ThemeToggle } from "@/src/components/theme-toggle"
+import { MainNav } from "@/src/components/main_nav"
+import { ThemeToggle } from "@/src/components/theme_toggle"
 
 export function SiteHeader() {
   return (

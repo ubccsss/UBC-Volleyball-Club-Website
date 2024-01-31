@@ -14,7 +14,7 @@ export function MainNav({ items }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">
         <img className="size-14" src="https://www.ubcvolleyball.club/uploads/6/9/6/2/69627653/published/ubc-volleyball-club.png?1679899044" alt="UBC Volleyball Club"/> 
-        <span className="inline-block font-bold">{siteConfig.name}</span>
+        {/* <span className="inline-block font-bold">{siteConfig.name}</span> */}
       </Link>
       {/* {items?.length ? (
         <nav className="flex gap-6">

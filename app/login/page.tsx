@@ -44,19 +44,19 @@ export default function LoginPage() {
           <img className="h-full w-full object-cover" src="https://www.ubcvolleyball.club/uploads/6/9/6/2/69627653/background-images/1589257857.jpeg" alt="Login hero" />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent"></div>
         </div>
-        <div className="relative z-20 flex items-center text-lg font-medium">
+        {/* <div className="relative z-20 flex items-center text-lg font-bold text-amber-500">
           UBC Competitive Volleyball Club
-        </div>
-        {/* <div className="relative z-20 mt-auto">
+        </div> */}
+        <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
-            <p className="text-lg">
-              “This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.”
+            <p className="text-2xl font-bold text-amber-500">
+              UBC Competitive Volleyball Club
             </p>
-            <footer className="text-sm">
-              Sofia Davis
+            <footer className="text-lg">
+              est. 2022
             </footer>
           </blockquote>
-        </div> */}
+        </div>
       </div>
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

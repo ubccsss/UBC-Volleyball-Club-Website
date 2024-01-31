@@ -37,7 +37,7 @@ export async function middleware(req: NextRequest) {
     const url = req.nextUrl.clone()   
     if (!paths.includes(url.pathname)) {
       url.pathname = '/login'
-      return NextResponse.redirect(url)   
+      //return NextResponse.redirect(url)   
     } 
   }
 

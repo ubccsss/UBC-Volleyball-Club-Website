@@ -8,8 +8,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/src/components/ui/form"
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "../../../ui/input";
+import { Button } from "../../../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"

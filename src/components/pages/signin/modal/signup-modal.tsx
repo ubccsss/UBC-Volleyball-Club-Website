@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "@/src/styles/modal.module.css";
 import SignupForm from './signup-form';
 import AccountButton from "./account-type-button";
-import { Button } from "../ui/button";
+import { Button } from "../../../ui/button";
 import Link from "next/link";
 import {
   Form,

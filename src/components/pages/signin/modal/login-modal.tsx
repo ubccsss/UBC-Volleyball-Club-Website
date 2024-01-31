@@ -1,7 +1,7 @@
 "use client"
 import styles from "@/src/styles/modal.module.css";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { Button } from "../../../ui/button";
+import { Input } from "../../../ui/input";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"

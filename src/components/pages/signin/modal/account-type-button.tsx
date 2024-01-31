@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "@/src/styles/modal.module.css";
-import { Button } from "../ui/button";
+import { Button } from "../../../ui/button";
 
 interface AccountButtonProps {
   accountType: string;

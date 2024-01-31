@@ -6,7 +6,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
+html {
+  @apply text-gray-800
+}
 
 @layer base {
   :root {

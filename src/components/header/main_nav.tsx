@@ -1,10 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react"
 import Link from "next/link"
 
 import { NavItem } from "@/src/types/nav"
 import { siteConfig } from "@/src/config/site"
-import { cn } from "@/src/lib/utils"
-import { Icons } from "@/src/components/header/icons"
 
 interface MainNavProps {
   items?: NavItem[]
@@ -14,10 +13,10 @@ export function MainNav({ items }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">
-        <Icons.logo className="size-6" />
+        <img className="size-14" src="https://www.ubcvolleyball.club/uploads/6/9/6/2/69627653/published/ubc-volleyball-club.png?1679899044" alt="UBC Volleyball Club"/> 
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
-      {items?.length ? (
+      {/* {items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
             (item, index) =>
@@ -35,7 +34,7 @@ export function MainNav({ items }: MainNavProps) {
               )
           )}
         </nav>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }

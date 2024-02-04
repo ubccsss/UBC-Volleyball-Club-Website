@@ -1,12 +1,13 @@
 import "@/src/styles/globals.css"
+import "@/src/styles/globals.css"
 import { Metadata } from "next"
 
 import { siteConfig } from "@/src/config/site"
 import { fontSans } from "@/src/lib/fonts"
 import { cn } from "@/src/lib/utils"
-import { SiteHeader } from "@/src/components/site-header"
-import { TailwindIndicator } from "@/src/components/tailwind-indicator"
-import { ThemeProvider } from "@/src/components/theme-provider"
+import { TailwindIndicator } from "@/src/components/utils/tailwind_indicator"
+import { ThemeProvider } from "@/src/components/providers/theme_provider"
+import { SiteHeader } from "@/src/components/header/site_header_old"
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
   },
 }
 
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -41,9 +43,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="relative flex max-h-screen flex-col">
               <SiteHeader />
-              <div className="flex-1">{children}</div>
+              <div>{children}</div>
             </div>
             <TailwindIndicator />
           </ThemeProvider>
@@ -52,3 +54,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </>
   )
 }
+
+
+
+

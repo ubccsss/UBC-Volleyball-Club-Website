@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "UBC Volleyball Club Dashboard",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Playing competitive club volleyball est.2022",
   mainNav: [
     {
       title: "Home",
@@ -11,8 +11,6 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    mainsite: "https://ui.shadcn.com",
   },
 }

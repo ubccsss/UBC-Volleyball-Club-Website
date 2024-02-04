@@ -22,8 +22,7 @@ const AccountButton: React.FC<AccountButtonProps> = ({
   return (
     <Button
       type="button"
-      variant="accountType"
-      className={`${isSelected ? styles.selected : ''}`}
+      className="mb-12 flex h-32 w-48 items-center justify-center bg-blue-900"
       onClick={handleButtonClick}
     >
       <div className={styles['account-desc']}>
@@ -45,7 +44,7 @@ const AccountButton: React.FC<AccountButtonProps> = ({
             <path d="M27.3334 18.7917L30.75 22.2083L37.5834 15.375" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         )}
-        <h1 className={styles['text-basic']}>{accountType === 'player' ? 'Player' : 'Admin'}</h1>
+        <h1 className="text-2xl not-italic text-white">{accountType === 'player' ? 'Player' : 'Admin'}</h1>
       </div>
     </Button>
   );

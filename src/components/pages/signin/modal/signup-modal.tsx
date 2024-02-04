@@ -36,12 +36,6 @@ const SignupModal: React.FC<SignupModalProps> = () => {
     }
   };
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) {
-      window.location.href = '/';
-
-    }
-  };
 
   const handleAccountType = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,7 +71,6 @@ const SignupModal: React.FC<SignupModalProps> = () => {
   };
 
   return (
-      <div className={styles['modal-backdrop']} onClick={handleBackdropClick}>
         <div className={styles['modal-content']}>
           {showSelectAccountType && (
           <div>
@@ -155,7 +148,6 @@ const SignupModal: React.FC<SignupModalProps> = () => {
           )}
 
         </div>
-      </div>
   );
 };
 

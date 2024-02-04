@@ -1,47 +1,88 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
+import { CookieOptions, createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 
 import type { NextRequest } from 'next/server'
 //import type { Database } from '@/lib/database.types'
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next()
-  const supabase = createMiddlewareClient({ req, res })
-  const { data: { session }} = await supabase.auth.getSession()
-  const paths = ['/login','/register']
+export async function middleware(request: NextRequest) {
 
-  /* WORK AROUND FOR SETTING REFRESH TOKEN COOKIE
-  if (session) {
-    res.cookies.set('supabase.auth.token', session.access_token, {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-    })
-    res.cookies.set('supabase.auth.refresh_token', session.refresh_token, {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30,
-      sameSite: 'lax',
-      secure: process.
-        env.NODE_ENV === 'production',
-    })
-  } else if (req.cookies.get('supabase.auth.token')) {
-    const response = await supabase.auth.refreshSession({
-      refresh_token: req.cookies.get('supabase.auth.refresh_token')!.value,
-    })
-  }
-  */
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
 
-  if (!session) {
-    // this is a protected route - only users who are signed in can view this route
-    const url = req.nextUrl.clone()   
-    if (!paths.includes(url.pathname)) {
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return request.cookies.get(name)?.value
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+          response.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+        },
+        remove(name: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value: '',
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+          response.cookies.set({
+            name,
+            value: '',
+            ...options,
+          })
+        },
+      },
+    }
+  )
+
+  const user = await supabase.auth.getUser()
+
+  // ---- Route Protection ---- //
+  
+  //protects all routes from unauthenticated users
+  const login_paths = ['/login','/signup','/error']
+  if (!user.data.user) {
+    const url = request.nextUrl.clone()   
+    if (!login_paths.includes(url.pathname)) {
       url.pathname = '/login'
-      //return NextResponse.redirect(url)   
-    } 
+      return NextResponse.redirect(url)   
+    }     
   }
 
-  return res
+  //Redirect unregistered users to register page
+
+
+  //redirects tryouts to tryout page
+
+
+  //redirects unverified admins to unverified page
+
+  
+
+  return response
 }
 
 // Ensure the middleware is only called for relevant paths.

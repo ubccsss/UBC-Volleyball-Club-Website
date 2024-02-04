@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { Button } from "@/src/components/ui/button";
@@ -14,10 +15,12 @@ import {
 import * as z from "zod"
 import { useForm } from "react-hook-form";
 import { Input } from "@/src/components/ui/input";
+import { login } from "./login_action";
+import { LoginData } from "@/src/types/login";
 
 const formSchema = z.object({
-  username: z.string().min(2,{
-    message: "Username must be at least 2 characters.",
+  email: z.string().min(2,{
+    message: "email must be at least 2 characters.",
   }).max(50),
   password: z.string()
 })
@@ -27,15 +30,17 @@ export default function LoginPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: ""
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
+    await login(values as LoginData);
   }
 
+  
   return (
     <div className="container relative hidden h-[calc(100vh-65px)] flex-col items-center justify-center sm:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
@@ -61,7 +66,7 @@ export default function LoginPage() {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
             <div className="mx-auto block w-6/12">
-              <img src="https://www.ubcvolleyball.club/uploads/6/9/6/2/69627653/published/ubc-volleyball-club.png?1679899044" alt="UBC Volleyball Club"/> 
+              <img src="https://www.ubcvolleyball.club/uploads/6/9/6/2/69627653/s105778333429576097_p6_i1_w1563.png?width=640" alt="UBC Volleyball Club"/> 
             </div>
             <h1 className="text-2xl font-semibold tracking-tight">
               Login
@@ -77,11 +82,11 @@ export default function LoginPage() {
                   <div className="grid gap-2">
                     <FormField
                       control={form.control}
-                      name="username"
+                      name="email"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                              <Input type="username" placeholder="Username" {...field}/>
+                              <Input type="email" placeholder="Email" {...field}/>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -103,7 +108,7 @@ export default function LoginPage() {
                   <div className="text-right text-xs text-slate-500	">
                     <a href="/forgot-password">Forgot your password?</a>
                   </div>
-                  <Button>
+                  <Button type="submit">
                     Sign-in with email
                   </Button>
                 </div>

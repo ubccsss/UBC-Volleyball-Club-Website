@@ -14,11 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 
-
-
 // TODO: add restrictions
 const formSchema = z.object({
-  username: z.string().min(2,{
+  email: z.string().min(2,{
     message: "Username must be at least 2 characters.",
   }).max(50),
   password: z.string(),

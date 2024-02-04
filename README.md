@@ -1,7 +1,7 @@
 # UBC Volleyball Club Dashboard 
 
 # IMPORTANT!
-you NEED a file called env.local in the root directory to run this project. This file stores all our API keys which are sensitive so do not push it to github!
+you NEED a file called .env.local in the root directory to run this project. This file stores all our API keys which are sensitive so do not push it to github!
 To get it, check the google drive link linked in Jira (or just msg adi) 
 
 ## Setup 
@@ -45,7 +45,6 @@ For examples, check out the action.ts in /login and /signup for reference :)
 │   ├── Roster            routes to www.website/roster  
 │   │   ├── page.tsx          roster page component
 │   │   ├── user_action.ts    server action that is used for securing database calls, api calls, sensitive data!
-
 │   ├── api               routes to www.website/api (Backend API)  
 │   │   ├── getUsers.tsx      api Route (www.website/api/getUsers)
 │   ├── ...               ...The Rest of the Pages

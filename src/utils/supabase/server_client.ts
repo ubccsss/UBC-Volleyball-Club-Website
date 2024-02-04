@@ -1,5 +1,5 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { cookies } from "next/headers"
+import { createServerClient } from "@supabase/ssr"
 
 // Server Component client - To access Supabase from Server Components, which run only on the server.
 // USE THIS CLIENT FOR SERVER-SIDE COMPONENTS

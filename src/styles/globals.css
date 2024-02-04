@@ -7,7 +7,7 @@
 @import "tailwindcss/utilities";
 
 html {
-  @apply text-gray-800
+  @apply text-gray-800;
 }
 
 @layer base {
@@ -32,10 +32,9 @@ html {
     --input: 20 5.9% 90%;
     --ring: 20 14.3% 4.1%;
     --radius: 0.5rem;
-    --ubc-blue:236 52% 28%
+    --ubc-blue: 236 52% 28%;
   }
 }
-
 
 /* @layer base {
   :root {

@@ -6,13 +6,11 @@ export default function Page() {
           Roster Page
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Display Event Calender, Let users accept or decline events, Let users click on events to get more details
+          TODO: Display Event Calender, Let users accept or decline events, Let
+          users click on events to get more details
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

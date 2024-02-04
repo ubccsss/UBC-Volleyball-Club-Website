@@ -6,13 +6,12 @@ export default function Page() {
           Stats Page
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Display Stats Tables, Let Coaches make different aggregates of stats, Show recent games and stats, Let coaches enter data input mode, show data input results from past games etc.
+          TODO: Display Stats Tables, Let Coaches make different aggregates of
+          stats, Show recent games and stats, Let coaches enter data input mode,
+          show data input results from past games etc.
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

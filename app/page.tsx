@@ -11,14 +11,12 @@ export default function IndexPage() {
           Home Page
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Display Event Calendar, Show upcoming games, show upcoming games for that user, show user details, show coach details <br/>
+          TODO: Display Event Calendar, Show upcoming games, show upcoming games
+          for that user, show user details, show coach details <br />
           refer to the figma for more details
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

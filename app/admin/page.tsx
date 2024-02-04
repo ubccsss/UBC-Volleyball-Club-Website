@@ -6,13 +6,11 @@ export default function Page() {
           Admin Page
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Show Tables of all Users, Let Admins change certain information such as user details, coach details, and game details <br/>
+          TODO: Show Tables of all Users, Let Admins change certain information
+          such as user details, coach details, and game details <br />
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

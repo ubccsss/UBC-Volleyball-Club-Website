@@ -9,10 +9,7 @@ export default function Page() {
           TODO: Display all Team Rosters
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

@@ -3,5 +3,5 @@ export enum roles {
   TRYOUT,
   PLAYER,
   COACH,
-  ADMIN
+  ADMIN,
 }

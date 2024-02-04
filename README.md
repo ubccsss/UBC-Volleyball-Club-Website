@@ -1,4 +1,8 @@
-#UBC Volleyball Club Dashboard 
+# UBC Volleyball Club Dashboard 
+
+# IMPORTANT!
+you NEED a file called env.local in the root directory to run this project. This file stores all our API keys which are sensitive so do not push it to github!
+To get it, check the google drive link linked in Jira (or just msg adi) 
 
 ## Setup 
 Once you clone the project, open it up in vscode and use the following commands:

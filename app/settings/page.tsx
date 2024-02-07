@@ -6,13 +6,11 @@ export default function Page() {
           Settings Page
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Display User Focused settings, password reset, picture change, etc.
+          TODO: Display User Focused settings, password reset, picture change,
+          etc.
         </p>
       </div>
-      <div className="flex gap-4">
-      </div>
+      <div className="flex gap-4"></div>
     </section>
   )
 }
-
-

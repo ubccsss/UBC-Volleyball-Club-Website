@@ -4,20 +4,22 @@
 you NEED a file called .env.local in the root directory to run this project. This file stores all our API keys which are sensitive so do not push it to github!
 To get it, check the google drive link linked in Jira (or just msg adi) 
 
-## Setup 
 Once you clone the project, open it up in vscode and use the following commands:
 
 To install all the packages
+
 ```
 npm install
 ```
 
 To start the development server.
+
 ```
 npm run dev
 ```
 
 Before you commit and create your pull requests use this:
+
 ```
 npm run lint
 ```
@@ -36,10 +38,11 @@ For examples, check out the action.ts in /login and /signup for reference :)
 ```
 
 ## File Structure
+
 ```
 ├── app
 │   ├── page.tsx          Homepage (www.website/)
-│   ├── layout.tsx        Root layout for each page 
+│   ├── layout.tsx        Root layout for each page
 │   ├── not-found.tsx     404 page
 │   ├── error.tsx         Error page
 │   ├── Roster            routes to www.website/roster  
@@ -58,12 +61,12 @@ For examples, check out the action.ts in /login and /signup for reference :)
 │   ├── handlers          Large handler files for stuff like mailing can be put here           
 │   ├── types             Put typescript type definitons here
 ├── public
-│   ├── images          
+│   ├── images
 │   │   ├── all image files
 │   ├── ... all other public files
 ├── ...
 ├── node_modules
 ├── package.json
-├── package-lock.json 
+├── package-lock.json
 └── .gitignore
 ```

@@ -1,11 +1,9 @@
-import { CookieOptions, createServerClient } from '@supabase/ssr'
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from "next/server"
+import { CookieOptions, createServerClient } from "@supabase/ssr"
 
-import type { NextRequest } from 'next/server'
 //import type { Database } from '@/lib/database.types'
 
 export async function middleware(request: NextRequest) {
-
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -40,7 +38,7 @@ export async function middleware(request: NextRequest) {
         remove(name: string, options: CookieOptions) {
           request.cookies.set({
             name,
-            value: '',
+            value: "",
             ...options,
           })
           response = NextResponse.next({
@@ -50,7 +48,7 @@ export async function middleware(request: NextRequest) {
           })
           response.cookies.set({
             name,
-            value: '',
+            value: "",
             ...options,
           })
         },
@@ -61,26 +59,22 @@ export async function middleware(request: NextRequest) {
   const user = await supabase.auth.getUser()
 
   // ---- Route Protection ---- //
-  
+
   //protects all routes from unauthenticated users
-  const login_paths = ['/login','/signup','/error']
+  const login_paths = ["/login", "/signup", "/error"]
   if (!user.data.user) {
-    const url = request.nextUrl.clone()   
+    const url = request.nextUrl.clone()
     if (!login_paths.includes(url.pathname)) {
-      url.pathname = '/login'
-      return NextResponse.redirect(url)   
-    }     
+      url.pathname = "/login"
+      return NextResponse.redirect(url)
+    }
   }
 
   //Redirect unregistered users to register page
 
-
   //redirects tryouts to tryout page
 
-
   //redirects unverified admins to unverified page
-
-  
 
   return response
 }
@@ -94,6 +88,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 }

@@ -1,13 +1,13 @@
 import "@/src/styles/globals.css"
 import "@/src/styles/globals.css"
 import { Metadata } from "next"
+import { fontSans } from "@/src/utils/fonts"
+import { cn } from "@/src/utils/utils"
 
 import { siteConfig } from "@/src/config/site"
-import { fontSans } from "@/src/lib/fonts"
-import { cn } from "@/src/lib/utils"
-import { TailwindIndicator } from "@/src/components/utils/tailwind_indicator"
+import { SiteHeader } from "@/src/components/header/navbar"
 import { ThemeProvider } from "@/src/components/providers/theme_provider"
-import { SiteHeader } from "@/src/components/header/site_header_old"
+import { TailwindIndicator } from "@/src/components/utils/tailwind_indicator"
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 }
-
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -54,7 +53,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </>
   )
 }
-
-
-
-

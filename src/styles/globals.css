@@ -11,28 +11,60 @@ html {
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 47.9 95.8% 53.1%;
-    --primary-foreground: 26 83.3% 14.1%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
+    --background: 41 9% 100%;
+    --foreground: 41 5% 10%;
+    --card: 41 9% 100%;
+    --card-foreground: 41 5% 15%;
+    --popover: 41 9% 100%;
+    --popover-foreground: 41 95% 10%;
+    --primary: 41 90.5% 49.6%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 41 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 3 10% 95%;
+    --muted-foreground: 41 5% 40%;
+    --accent: 3 10% 90%;
+    --accent-foreground: 41 5% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 41 5% 100%;
+    --border: 41 20% 82%;
+    --input: 41 20% 50%;
+    --ring: 41 90.5% 49.6%;
     --radius: 0.5rem;
-    --ubc-blue: 236 52% 28%;
+    --ubcblue: 211.3 100% 13.53%;
+  }
+  /* .dark  {
+    --background: 41 10% 10%;
+    --foreground: 41 5% 100%;
+    --card: 41 9% 10%;
+    --card-foreground: 41 5% 100%;
+    --popover: 41 10% 5%;
+    --popover-foreground: 41 5% 100%;
+    --primary: 41 90.5% 49.6%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 41 10% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 3 10% 25%;
+    --muted-foreground: 41 5% 65%;
+    --accent: 3 10% 25%;
+    --accent-foreground: 41 5% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 41 5% 100%;
+    --border: 41 20% 50%;
+    --input: 41 20% 50%;
+    --ring: 41 90.5% 49.6%;
+    --radius: 0.5rem;
+  } */
+
+  body {
+    @apply bg-background text-foreground;
+
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
@@ -83,15 +115,3 @@ html {
     --radius: 0.5rem;
   }
 } */
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}

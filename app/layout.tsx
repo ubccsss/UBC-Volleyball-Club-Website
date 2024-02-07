@@ -5,7 +5,7 @@ import { fontSans } from "@/src/utils/fonts"
 import { cn } from "@/src/utils/utils"
 
 import { siteConfig } from "@/src/config/site"
-import { SiteHeader } from "@/src/components/header/site_header_old"
+import { SiteHeader } from "@/src/components/header/navbar"
 import { ThemeProvider } from "@/src/components/providers/theme_provider"
 import { TailwindIndicator } from "@/src/components/utils/tailwind_indicator"
 

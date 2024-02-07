@@ -8,8 +8,21 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+    {
+      title: "Roster",
+      href: "/roster",
+    },
+    {
+      title: "Schedule",
+      href: "/schedule",
+    },
+    {
+      title: "Statistics",
+      href: "/statistics",
+    },
+    {
+      title: "Admin",
+      href: "/admin",
+    },
   ],
-  links: {
-    mainsite: "https://ui.shadcn.com",
-  },
 }

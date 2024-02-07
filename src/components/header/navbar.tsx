@@ -44,7 +44,7 @@ export function SiteHeader() {
           <button className="flex rounded-full bg-primary text-sm focus:ring-4 focus:ring-primary dark:focus:ring-gray-600 md:me-0">
             <Avatar
               onClick={handleLogout}
-              className="hover:border border-transparent hover:border-primary transition duration-300 ease-in-out"
+              className="border-transparent transition duration-300 ease-in-out hover:border hover:border-primary"
             >
               <AvatarImage src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x4.jpg" />
               <AvatarFallback>User</AvatarFallback>

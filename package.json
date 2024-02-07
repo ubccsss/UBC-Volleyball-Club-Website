@@ -1,6 +1,6 @@
 {
-  "name": "UBC Volleyball Dashboard",
-  "version": "0.0.2",
+  "name": "UBC Volleyball Club Dashboard",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -1,16 +1,60 @@
-export default function Page() {
+import React from 'react';
+import { Container, Card, CardBody, Input, Select, Button, Textarea } from '@shadcn/ui';
+
+const SettingsPage = () => {
+  // Assume a state management hook is used to handle form values and changes
+  const [formValues, setFormValues] = React.useState({
+    username: '',
+    email: '',
+    bio: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle the submission logic
+    console.log(formValues);
+  };
+
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Settings Page
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground">
-          TODO: Display User Focused settings, password reset, picture change,
-          etc.
-        </p>
-      </div>
-      <div className="flex gap-4"></div>
-    </section>
-  )
-}
+    <Container>
+      <Card>
+        <form onSubmit={handleSubmit}>
+          <CardBody>
+            <h2>Profile</h2>
+            <Input
+              label="Username"
+              name="username"
+              placeholder="user"
+              value={formValues.username}
+              onChange={handleChange}
+            />
+            <Select
+              label="Email"
+              name="email"
+              placeholder="Select a verified email to display"
+              value={formValues.email}
+              onChange={handleChange}
+            >
+              {/* Options would be populated dynamically */}
+            </Select>
+            <Textarea
+              label="Bio"
+              name="bio"
+              placeholder="I own a computer."
+              value={formValues.bio}
+              onChange={handleChange}
+            />
+            <Button type="submit">Update Profile</Button>
+          </CardBody>
+        </form>
+      </Card>
+    </Container>
+  );
+};
+
+export default SettingsPage;

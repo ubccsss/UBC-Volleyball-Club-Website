@@ -18,7 +18,7 @@ export default function Page() {
           <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
             Fall 2023 Registration
           </h1>
-          <p className="max-w-[700px] text-center text-lg text-muted-foreground">
+          <p className="max-w-[700px] text-center text-lg text-black">
             Sign up for tryouts. Please choose a slot from below. You will be redirected to the 
             payment page once you have successfully signed up.
           </p>

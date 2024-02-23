@@ -2,15 +2,18 @@
 
 import { Button } from "@/src/components/ui/button";
 import { useState } from "react";
+import { redirect, useRouter } from "next/navigation"
+import { revalidatePath } from "next/cache"
 import { custom } from "zod";
 
 export default function Page() {
     const [selectedTryouts, setSelectedTryouts] = useState("women");
+    const router = useRouter();
 
-    const handleSignup = () => {
+    const handleSignup =  () => {
         console.log(selectedTryouts);
-
-      }
+        router.push(`/tryouts/registration?tryout=${selectedTryouts}`);
+      };
     
     return (
       <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">
@@ -54,7 +57,7 @@ export default function Page() {
             </Button>
         </div>
         <div className="flex flex-col items-center justify-center">
-            <Button variant="custom" className="mb-6" onClick={handleSignup}>
+            <Button className="mb-6" onClick={handleSignup}>
                 SIGN UP
             </Button>
             <h1>

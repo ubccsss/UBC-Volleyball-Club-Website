@@ -5,6 +5,8 @@ import { useState } from "react";
 import { redirect, useRouter } from "next/navigation"
 import { revalidatePath } from "next/cache"
 import { custom } from "zod";
+import Link from 'next/link';
+
 
 export default function Page() {
     const [selectedTryouts, setSelectedTryouts] = useState("women");
@@ -17,6 +19,11 @@ export default function Page() {
     
     return (
       <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">
+        <div className="flex items-center justify-center">
+            <Button onClick={() => router.back()}>
+                Back to sign up page
+            </Button>
+        </div>
         <div className="flex max-w-[980px] flex-col gap-2">
           <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
             Fall 2023 Registration
@@ -61,8 +68,9 @@ export default function Page() {
                 SIGN UP
             </Button>
             <h1>
-                Already registered? Sign in.
+                Already registered? <Link className="text-[#22276c] hover:underline" href="/login">Sign in.</Link>
             </h1>
+            
         </div>
         <div className="flex gap-4"></div>
       </section>

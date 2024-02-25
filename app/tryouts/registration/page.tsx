@@ -18,6 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
 import { useRouter, useSearchParams} from 'next/navigation';
 import { useState } from 'react';
 import { Checkbox } from "@/src/components/ui/checkbox"
+import Link from "next/link"
 
 const yearlevelItems = [
   {
@@ -62,6 +63,8 @@ const FormSchema = z.object({
 })
 
 export default function Registration() {
+  const router = useRouter();
+
   const params = useSearchParams();
   const type = params.get('tryout');
 
@@ -89,13 +92,18 @@ export default function Registration() {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(JSON.stringify(data, null, 2));
   }
-  
+
   return (
-    <div>
+    <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">
+      <div className="flex items-center justify-center">
+            <Button onClick={() => router.back()}>
+              Back to tryouts page
+            </Button>
+        </div>
      {tryoutsOpen ? (
         <>
           <div>
-            <div className='my-[100px]'>
+            <div className='my-[30px]'>
               <h1 className="text-center text-3xl font-extrabold">
                 UBC Volleyball Club Tryouts - {type}
               </h1> 
@@ -260,6 +268,6 @@ export default function Registration() {
           </div>
         </>
       )}
-    </div>
+    </section>
   )
 }

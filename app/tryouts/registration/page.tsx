@@ -9,19 +9,42 @@ import {
   FormMessage,
 } from "@/src/components/ui/form"
 import { Input } from "@/src/components/ui/input"
-
-
- 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/src/components/ui/button"
-
-
 import { Label } from "@/src/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/src/components/ui/radio-group"
 import { useRouter, useSearchParams} from 'next/navigation';
 import { useState } from 'react';
+import { Checkbox } from "@/src/components/ui/checkbox"
+
+const yearlevelItems = [
+  {
+    id: "first",
+    label: "First",
+  },
+  {
+    id: "second",
+    label: "Second",
+  },
+  {
+    id: "third",
+    label: "Third",
+  },
+  {
+    id: "fourth",
+    label: "Fourth+",
+  },
+  {
+    id: "masters",
+    label: "Masters",
+  },
+  {
+    id: "phd",
+    label: "PhD",
+  },
+] as const
 
 const FormSchema = z.object({
   pposition: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
@@ -29,12 +52,12 @@ const FormSchema = z.object({
   }),
   sposition: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
     required_error: "You need to select a secondary position",
-  }),  
-  // yearlevel: z.array(z.enum(["First", "Second", "Third", "Fourth+", "Masters", "PhD"], {
-  //   required_error: "You need to select a year level",
-  // })).nonempty(),
-  // faculty: z.string().nonempty(),
-  // experience: z.string().nonempty(),
+  }),
+  yearlevel: z.array(z.string()).refine((value) => value.some((item) => item), {
+    message: "You need to select a year level",
+  }),
+  faculty: z.string().nonempty(),
+  experience: z.string().nonempty(),
 
 })
 
@@ -45,7 +68,7 @@ export default function Registration() {
   // TODO: link to DB
   const [tryoutsOpen, setTryoutsStatus] = useState(true);
   
-  function generateRadioGroupItems(items) {
+  function generateRadioGroupItems(items: any[]) {
     return items.map((item) => (
       <FormItem key={item.value} className="flex items-center space-x-3 space-y-0">
         <FormControl>
@@ -58,26 +81,15 @@ export default function Registration() {
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      yearlevel: ["first"],
+    },
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(JSON.stringify(data, null, 2));
-    // console.log(form);
   }
-
   
-  const [selectedValues, setSelectedValues] = useState([]);
-  
-  function handleCheckboxChange(value) {
-    if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((item) => item !== value));
-    } else {
-      setSelectedValues([...selectedValues, value]);
-    }
-    form.setValue("yearlevel", selectedValues);
-
-  }
-
   return (
     <div>
      {tryoutsOpen ? (
@@ -93,13 +105,13 @@ export default function Registration() {
                     <FormItem className="space-y-3">
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input value="Your Name" readOnly className="bg-gray-200 cursor-not-allowed"/>
+                        <Input value="Your Name" readOnly className="cursor-not-allowed bg-gray-200"/>
                       </FormControl>
                     </FormItem>
                     <FormItem className="space-y-3">
                       <FormLabel>UBC Student Number</FormLabel>
                       <FormControl>
-                        <Input value="12345678" readOnly className="bg-gray-200 cursor-not-allowed"/>
+                        <Input value="12345678" readOnly className="cursor-not-allowed bg-gray-200"/>
                       </FormControl>
                     </FormItem>
                     <FormField
@@ -153,39 +165,84 @@ export default function Registration() {
                         
                       )}
                     />
-                    <FormItem name="yearlevel" className="space-y-3">
-                      <FormLabel>What year are you in?</FormLabel>
-                      <p className="text-sm text-gray-500">Select all that apply</p>
-                      <div className="space-y-2">
-                        {['First', 'Second', 'Third', 'Fourth+', 'Masters', 'PhD'].map((value) => (
-                          <label key={value} className="flex items-center space-x-2">
-                            <input
-                              type="checkbox"
-                              value={value}
-                              onChange={() => handleCheckboxChange(value)}
-                              checked={selectedValues.includes(value)}
+                    <FormField
+                      control={form.control}
+                      name="yearlevel"
+                      render={() => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>What year are you in?</FormLabel>
+                          <FormDescription className="text-sm text-gray-500">Select all that apply</FormDescription>
+                          <div className="space-y-2">
+                          {yearlevelItems.map((item) => (
+                            <FormField
+                              key={item.id}
+                              control={form.control}
+                              name="yearlevel"
+                              render={({ field }) => {
+                                return (
+                                  <FormItem
+                                    key={item.id}
+                                    className="flex flex-row items-start space-x-3 space-y-0"
+                                  >
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={field.value?.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                          const fieldvals = field.value
+                                          return checked
+                                            ? field.onChange([...fieldvals, item.id])
+                                            : field.onChange(
+                                                field.value?.filter(
+                                                  (value) => value !== item.id
+                                                )
+                                              )
+                                        }}
+                                      />
+                                    </FormControl>
+                                    <FormLabel className="font-normal">
+                                      {item.label}
+                                    </FormLabel>
+                                  </FormItem>
+                                )
+                              }}
                             />
-                            <span className="text-sm">{value}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </FormItem>
-                    <FormItem name="faculty" className="space-y-3">
-                      <FormLabel>What faculty are you in?</FormLabel>
-                      <FormControl>
-                        <Input type="faculty" placeholder="Faculty"/>
-                      </FormControl>
-                    </FormItem>
-                    <FormItem name="experience" className="space-y-3">
-                      <FormLabel>Previous Highest Level of Club Experience (put N/A if none)</FormLabel>
-                      <FormControl>
-                        <Input type="experience"/>
-                      </FormControl>
-                    </FormItem>
+                          ))}
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="faculty"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>What faculty are you in?</FormLabel>
+                          <FormControl>
+                            <Input type="faculty" placeholder="Faculty" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="experience"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Previous Highest Level of Club Experience (put N/A if none)</FormLabel>
+                          <FormControl>
+                            <Input type="experience" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
                     <div className="w-[500px]">
-                      <h1>By submitting, you agree to pay the mandatory $10.00 tryout fee. You will be redirected to the payment screen.</h1>
+                      <h1 className="font-bold">
+                        By submitting, you agree to pay the mandatory $10.00 tryout fee. You will be redirected to the payment screen.
+                      </h1>
                     </div>
-                    <Button type="submit">Submit</Button>
+                    <div className="flex justify-center">
+                      <Button type="submit">Submit</Button>
+                    </div>  
                   </form>
                 </Form>
               </div>        
@@ -205,5 +262,4 @@ export default function Registration() {
       )}
     </div>
   )
-
 }

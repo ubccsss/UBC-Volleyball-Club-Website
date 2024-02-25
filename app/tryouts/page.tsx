@@ -6,6 +6,7 @@ import { redirect, useRouter } from "next/navigation"
 import { revalidatePath } from "next/cache"
 import { custom } from "zod";
 import Link from 'next/link';
+import Image from 'next/image'
 
 
 export default function Page() {
@@ -21,7 +22,7 @@ export default function Page() {
       <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">
         <div className="flex items-center justify-center">
             <a className="cursor-pointer" onClick={() => router.back()}>
-                <img className="size-8" src="/backarrow.svg" />
+                <Image height={30} width={30} src="/backarrow.svg" alt='back arrow'/>
             </a>
         </div>
         <div className="flex max-w-[980px] flex-col gap-2">

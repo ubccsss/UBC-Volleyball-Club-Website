@@ -19,6 +19,8 @@ import { useRouter, useSearchParams} from 'next/navigation';
 import { useState } from 'react';
 import { Checkbox } from "@/src/components/ui/checkbox"
 import Link from "next/link"
+import Image from 'next/image'
+
 
 const yearlevelItems = [
   {
@@ -97,7 +99,7 @@ export default function Registration() {
     <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex items-center justify-center">
         <a className="cursor-pointer" onClick={() => router.back()}>
-            <img className="size-8" src="/backarrow.svg" />
+          <Image height={30} width={30} src="/backarrow.svg" alt='back arrow'/>
         </a>
       </div>
      {tryoutsOpen ? (

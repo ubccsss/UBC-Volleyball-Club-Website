@@ -50,18 +50,23 @@ const yearlevelItems = [
 ] as const
 
 const FormSchema = z.object({
-  pposition: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
-    required_error: "You need to select a primary position",
-  }),
-  sposition: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
-    required_error: "You need to select a secondary position",
-  }),
-  yearlevel: z.array(z.string()).refine((value) => value.some((item) => item), {
+  year_level: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You need to select a year level",
   }),
   faculty: z.string().nonempty(),
-  experience: z.string().nonempty(),
-
+  height: z.string().nonempty(),
+  primary_position: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
+    required_error: "You need to select a primary position",
+  }),
+  secondary_position: z.enum(["leftside", "middle", "rightside", "libero", "setter"], {
+    required_error: "You need to select a secondary position",
+  }),
+  experience: z.string(),
+  description: z.string(),
+  standing_reach: z.string().nonempty(),
+  spike_touch: z.string().nonempty(),
+  block_touch: z.string().nonempty(),
+  highlights: z.string(),
 })
 
 export default function Registration() {
@@ -71,7 +76,7 @@ export default function Registration() {
   const type = params.get('tryout');
 
   // TODO: link to DB
-  const [tryoutsOpen, setTryoutsStatus] = useState(true);
+  const [tryoutsOpen, setTryoutsStatus] = useState(false);
   
   function generateRadioGroupItems(items: any[]) {
     return items.map((item) => (
@@ -87,7 +92,7 @@ export default function Registration() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      yearlevel: ["first"],
+      year_level: ["first"],
     },
   })
 
@@ -119,6 +124,18 @@ export default function Registration() {
                       </FormControl>
                     </FormItem>
                     <FormItem className="space-y-3">
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <Input value="000-000-0000" readOnly className="cursor-not-allowed bg-gray-200"/>
+                      </FormControl>
+                    </FormItem>
+                    <FormItem className="space-y-3">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input value="name@email.com" readOnly className="cursor-not-allowed bg-gray-200"/>
+                      </FormControl>
+                    </FormItem>
+                    <FormItem className="space-y-3">
                       <FormLabel>UBC Student Number</FormLabel>
                       <FormControl>
                         <Input value="12345678" readOnly className="cursor-not-allowed bg-gray-200"/>
@@ -126,58 +143,7 @@ export default function Registration() {
                     </FormItem>
                     <FormField
                       control={form.control}
-                      name="pposition"
-                      render={({ field }) => (
-                        <FormItem className="space-y-3">
-                          <FormLabel>Primary Position</FormLabel>
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                              className="flex flex-col space-y-1"
-                            >
-                              {generateRadioGroupItems([
-                                { value: "leftside", label: "Leftside" },
-                                { value: "middle", label: "Middle" },
-                                { value: "rightside", label: "Rightside" },
-                                { value: "setter", label: "Setter" },
-                                { value: "libero", label: "Libero" },
-                              ])}
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="sposition"
-                      render={({ field }) => (
-                        <FormItem className="space-y-3">
-                          <FormLabel>Secondary Position</FormLabel>
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                              className="flex flex-col space-y-1"
-                            >
-                              {generateRadioGroupItems([
-                                { value: "leftside", label: "Leftside" },
-                                { value: "middle", label: "Middle" },
-                                { value: "rightside", label: "Rightside" },
-                                { value: "setter", label: "Setter" },
-                                { value: "libero", label: "Libero" },
-                              ])}
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                        
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="yearlevel"
+                      name="year_level"
                       render={() => (
                         <FormItem className="space-y-3">
                           <FormLabel>What year are you in?</FormLabel>
@@ -187,7 +153,7 @@ export default function Registration() {
                             <FormField
                               key={item.id}
                               control={form.control}
-                              name="yearlevel"
+                              name="year_level"
                               render={({ field }) => {
                                 return (
                                   <FormItem
@@ -235,12 +201,137 @@ export default function Registration() {
                     />
                     <FormField
                       control={form.control}
+                      name="height"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Height (cm)</FormLabel>
+                          <FormControl>
+                            <Input type="height" placeholder="Height in cm" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="primary_position"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Primary Position</FormLabel>
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              {generateRadioGroupItems([
+                                { value: "leftside", label: "Leftside" },
+                                { value: "middle", label: "Middle" },
+                                { value: "rightside", label: "Rightside" },
+                                { value: "setter", label: "Setter" },
+                                { value: "libero", label: "Libero" },
+                              ])}
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="secondary_position"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Secondary Position</FormLabel>
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              {generateRadioGroupItems([
+                                { value: "leftside", label: "Leftside" },
+                                { value: "middle", label: "Middle" },
+                                { value: "rightside", label: "Rightside" },
+                                { value: "setter", label: "Setter" },
+                                { value: "libero", label: "Libero" },
+                              ])}
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                        
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
                       name="experience"
                       render={({field}) => (
                         <FormItem className="space-y-3">
                           <FormLabel>Previous Highest Level of Club Experience (put N/A if none)</FormLabel>
                           <FormControl>
                             <Input type="experience" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="description"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel style={{ width: '500px', display: 'block', lineHeight: '1.5'}}>Please describe your volleyball experience, including club experience, 
+                            accolades and achievements, training history, etc.</FormLabel>
+                          <FormControl>
+                            <Input type="description" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="standing_reach"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Standing Reach</FormLabel>
+                          <FormControl>
+                            <Input type="standing_reach" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="spike_touch"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Spike Touch</FormLabel>
+                          <FormControl>
+                            <Input type="spike_touch" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="block_touch"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>Block Touch</FormLabel>
+                          <FormControl>
+                            <Input type="block_touch" {...field}/>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="highlights"
+                      render={({field}) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel style={{ width: '500px', display: 'block', lineHeight: '1.5'}}>If you have any highlights/tape, please include it here! (link youtube video, ~3min)</FormLabel>
+                          <FormControl>
+                            <Input type="highlights" {...field}/>
                           </FormControl>
                         </FormItem>
                       )}
@@ -264,7 +355,7 @@ export default function Registration() {
           <div>
             <div className='my-[100px]'>
               <h1 className="text-center text-3xl font-extrabold">
-                Tryouts are not currently open.
+                Tryouts are not currently open. Sign up is not available.
               </h1>
             </div>
           </div>

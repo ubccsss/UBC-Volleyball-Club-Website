@@ -76,7 +76,7 @@ export default function Registration() {
   const type = params.get('tryout');
 
   // TODO: link to DB
-  const [tryoutsOpen, setTryoutsStatus] = useState(false);
+  const [tryoutsOpen, setTryoutsStatus] = useState(true);
   
   function generateRadioGroupItems(items: any[]) {
     return items.map((item) => (

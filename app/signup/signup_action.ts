@@ -24,7 +24,7 @@ export async function signup(loginData: LoginData) {
   }
 
   revalidatePath("/", "layout")
-  //TODO: switch the redirect once tryouts page is completed
-  // redirect("/tryouts") 
-  redirect("/")
+  //TODO: change this once full signup flow is done
+  redirect("/tryouts") 
+  // redirect("/")
 }
